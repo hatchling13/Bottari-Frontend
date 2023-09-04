@@ -18,9 +18,9 @@ export default async function Bundle({ name, links }: TBundle) {
       <section
         className={css({
           display: 'flex',
-          placeContent: 'center',
-          flexWrap: 'wrap',
+          alignItems: 'flex-start',
           gap: '10',
+          flexWrap: 'wrap',
         })}
       >
         {links.map((item) => (

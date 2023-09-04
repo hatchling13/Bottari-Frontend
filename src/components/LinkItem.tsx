@@ -1,4 +1,5 @@
 import { css } from '../../styled-system/css';
+import LinkDescription from './LinkDescription';
 
 import type { TLinkItem } from 'components';
 
@@ -20,11 +21,10 @@ export default async function LinkItem({ name, url, description }: TLinkItem) {
       />
       <section
         className={css({
-          marginX: '1rem',
           padding: '1rem',
           display: 'flex',
           flexDir: 'column',
-          gap: '3',
+          gap: '5',
         })}
       >
         <h3
@@ -36,7 +36,7 @@ export default async function LinkItem({ name, url, description }: TLinkItem) {
         >
           <a href={url}>{name}</a>
         </h3>
-        <p>{description}</p>
+        <LinkDescription>{description}</LinkDescription>
       </section>
     </article>
   );
