@@ -1,4 +1,6 @@
-export default function LinkItem({ name, url }: { name: string; url: string }) {
+import type { TLinkItem } from 'components';
+
+export default function LinkItem({ name, url }: TLinkItem) {
   return (
     <article>
       <h3>{name}</h3>
