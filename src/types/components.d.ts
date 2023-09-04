@@ -3,6 +3,7 @@ declare module 'components' {
     id: string;
     name: string;
     url: string;
+    description: string;
   }
 
   interface TBundle {

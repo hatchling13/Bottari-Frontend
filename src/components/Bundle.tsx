@@ -1,12 +1,28 @@
+import { css } from '../../styled-system/css';
 import LinkItem from '@/components/LinkItem';
 
 import type { TBundle } from 'components';
 
-export default function Bundle({ name, links }: TBundle) {
+export default async function Bundle({ name, links }: TBundle) {
   return (
-    <article>
-      <h2>{name}</h2>
-      <section>
+    <article
+      className={css({
+        padding: '3',
+        display: 'flex',
+        flexWrap: 'wrap',
+        flexDir: 'column',
+        placeContent: 'center',
+      })}
+    >
+      <h2 className={css({ padding: '5', fontSize: '2xl' })}>{name}</h2>
+      <section
+        className={css({
+          display: 'flex',
+          placeContent: 'center',
+          flexWrap: 'wrap',
+          gap: '10',
+        })}
+      >
         {links.map((item) => (
           <LinkItem key={item.id} {...item} />
         ))}
