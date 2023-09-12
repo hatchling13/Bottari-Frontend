@@ -14,7 +14,11 @@ export default async function Bundle({ name, links }: TBundle) {
         placeContent: 'center',
       })}
     >
-      <h2 className={css({ padding: '5', fontSize: '2xl' })}>{name}</h2>
+      <h2
+        className={css({ padding: '5', fontSize: '2xl', fontWeight: 'bold' })}
+      >
+        {name}
+      </h2>
       <section
         className={css({
           display: 'flex',
