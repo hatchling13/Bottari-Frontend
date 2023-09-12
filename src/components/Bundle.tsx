@@ -18,6 +18,7 @@ export default async function Bundle({ name, links }: TBundle) {
       <section
         className={css({
           display: 'flex',
+          justifyContent: 'center',
           alignItems: 'flex-start',
           gap: '10',
           flexWrap: 'wrap',
