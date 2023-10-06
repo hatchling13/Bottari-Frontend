@@ -21,7 +21,10 @@ export default function LinkDescription({ children }: { children: ReactNode }) {
       <p className={styles}>{children}</p>
       <button
         onClick={() => setIsHidden(!isHidden)}
-        className={css({ alignSelf: 'flex-end' })}
+        className={css({
+          alignSelf: 'flex-end',
+          '&:hover': { cursor: 'pointer' },
+        })}
       >
         {isHidden ? '더 보기' : '숨기기'}
       </button>

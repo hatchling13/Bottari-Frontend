@@ -1,4 +1,5 @@
 import { css } from '../../styled-system/css';
+import LinkDeleteDialog from './LinkDeleteDialog';
 import LinkDescription from './LinkDescription';
 
 import type { TLinkItem } from 'components';
@@ -14,14 +15,20 @@ export default async function LinkItem({ name, url, description }: TLinkItem) {
         boxShadow: '5px 5px gray',
       })}
     >
-      <img
-        src="https://placehold.co/600x400"
-        alt="placeholder text"
-        className={css({ objectFit: 'cover' })}
-      />
+      <div
+        className={css({
+          display: 'flex',
+          justifyContent: 'flex-end',
+          paddingTop: '3',
+          paddingEnd: '3',
+        })}
+      >
+        <LinkDeleteDialog />
+      </div>
       <section
         className={css({
-          padding: '1rem',
+          paddingX: '5',
+          paddingBottom: '3',
           display: 'flex',
           flexDir: 'column',
           gap: '5',
@@ -30,11 +37,14 @@ export default async function LinkItem({ name, url, description }: TLinkItem) {
         <h3
           className={css({
             fontSize: '2xl',
+            fontWeight: 'bold',
             wordWrap: 'break-word',
             wordBreak: 'keep-all',
           })}
         >
-          <a href={url}>{name}</a>
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            {name}
+          </a>
         </h3>
         <LinkDescription>{description}</LinkDescription>
       </section>
