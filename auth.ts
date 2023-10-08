@@ -1,5 +1,7 @@
 import { getServerSession } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
+import { PrismaClient } from '@prisma/client';
+import { PrismaAdapter } from '@auth/prisma-adapter';
 
 import type {
   GetServerSidePropsContext,
@@ -8,7 +10,10 @@ import type {
 } from 'next';
 import type { NextAuthOptions } from 'next-auth';
 
+const prisma = new PrismaClient();
+
 export const config = {
+  adapter: PrismaAdapter(prisma),
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
     GoogleProvider({
