@@ -6,7 +6,7 @@ import { signIn } from 'next-auth/react';
 
 import type { Session } from 'next-auth';
 
-// Change Link href when auth is completed
+// Replace href for Link when auth code is finished
 
 export default function StartButton({ session }: { session: Session | null }) {
   if (session) {
@@ -22,10 +22,10 @@ export default function StartButton({ session }: { session: Session | null }) {
 
   return (
     <button
-      onClick={() => signIn()}
+      onClick={() => signIn('google')}
       className={css({ fontSize: '2xl', _hover: { cursor: 'pointer' } })}
     >
-      시작하기
+      Google로 시작하기
     </button>
   );
 }
