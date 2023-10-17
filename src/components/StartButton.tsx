@@ -1,18 +1,27 @@
-'use client';
-
 import Link from 'next/link';
 import { css } from '../../styled-system/css';
-import { signIn } from 'next-auth/react';
+import { prisma } from '../../auth';
+import SignInButton from './SignInButton';
 
 import type { Session } from 'next-auth';
 
-// Replace href for Link when auth code is finished
-
-export default function StartButton({ session }: { session: Session | null }) {
+export default async function StartButton({
+  session,
+}: {
+  session: Session | null;
+}) {
   if (session) {
+    // There should be more robust way to implement this...
+    const userEmail = session.user?.email;
+    const user =
+      userEmail &&
+      (await prisma.user.findUnique({ where: { email: userEmail } }));
+
+    const id = user ? user.id : 'error';
+
     return (
       <Link
-        href={'/user-id-1'}
+        href={id}
         className={css({ fontSize: '2xl', _hover: { cursor: 'pointer' } })}
       >
         계속하기
@@ -20,12 +29,5 @@ export default function StartButton({ session }: { session: Session | null }) {
     );
   }
 
-  return (
-    <button
-      onClick={() => signIn('google')}
-      className={css({ fontSize: '2xl', _hover: { cursor: 'pointer' } })}
-    >
-      Google로 시작하기
-    </button>
-  );
+  return <SignInButton />;
 }
