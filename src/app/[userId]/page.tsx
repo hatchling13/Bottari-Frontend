@@ -1,25 +1,29 @@
 import { css } from '@/../styled-system/css';
-import { checkUserId, getSlugsOfBundles } from '../placeholder';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+
+import { prisma } from '@/../auth';
 
 export default async function BundlesPage({
   params,
 }: {
   params: { userId: string };
 }) {
-  const userExists = await checkUserId(params.userId);
+  const { userId } = params;
 
-  if (!userExists) {
+  const user = await prisma.user.findUnique({ where: { id: userId } });
+
+  if (!user) {
     notFound();
   }
 
-  const bundleSlugs = await getSlugsOfBundles(params.userId);
+  const bundles = await prisma.bundle.findMany({ where: { userId: userId } });
+  const slugs = bundles.map((bundle) => ({ id: bundle.id, name: bundle.name }));
 
   return (
     <main>
       <section className={css({ display: 'flex', gap: '5' })}>
-        {bundleSlugs.map((slug) => (
+        {slugs.map((slug) => (
           <Link
             key={slug.id}
             href={`${params.userId}/${slug.id}`}

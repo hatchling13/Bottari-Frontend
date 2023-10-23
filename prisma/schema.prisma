@@ -1,6 +1,6 @@
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
@@ -9,18 +9,18 @@ generator client {
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -43,6 +43,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  bundles       Bundle[]
 }
 
 model VerificationToken {
@@ -51,4 +52,21 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Bundle {
+  id     String @id @default(cuid())
+  userId String
+  name   String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  links  Link[]
+}
+
+model Link {
+  id          String @id @default(cuid())
+  bundleId    String
+  name        String
+  url         String
+  description String
+  bundle      Bundle @relation(fields: [bundleId], references: [id], onDelete: Cascade)
 }

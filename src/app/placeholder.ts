@@ -46,21 +46,21 @@ const link6 = {
 
 const bundle1 = {
   id: 'bundle-id-1',
-  userId: 'user-id-1',
+  userId: 'clnu13hdh00005qlg8vjbswyd',
   name: '프로그래밍',
   links: [link1, link2, link3, link4],
 };
 
 const bundle2 = {
   id: 'bundle-id-2',
-  userId: 'user-id-1',
+  userId: 'clnu13hdh00005qlg8vjbswyd',
   name: '디자인',
   links: [link5, link6],
 };
 
 const data = {
   bundles: [bundle1, bundle2],
-  users: ['user-id-1', 'user-id-2'],
+  users: ['user-id-1', 'user-id-2', 'clnu13hdh00005qlg8vjbswyd'],
 };
 
 export async function checkUserId(id: string) {
