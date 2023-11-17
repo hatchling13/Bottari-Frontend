@@ -22,23 +22,35 @@ export default async function BundlesPage({
 
   return (
     <main>
-      <section className={css({ display: 'flex', gap: '5' })}>
-        {slugs.map((slug) => (
-          <Link
-            key={slug.id}
-            href={`${params.userId}/${slug.id}`}
-            className={css({
-              padding: '5',
-              border: '1px solid',
-              borderRadius: 'lg',
-              fontSize: '2xl',
-              fontWeight: 'bold',
-            })}
-          >
-            {slug.name}
-          </Link>
-        ))}
-      </section>
+      {bundles.length === 0 ? (
+        '저장된 링크 모음이 없습니다.'
+      ) : (
+        <section
+          className={css({
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+            gap: '10',
+            flexWrap: 'wrap',
+          })}
+        >
+          {slugs.map((slug) => (
+            <Link
+              key={slug.id}
+              href={`${params.userId}/${slug.id}`}
+              className={css({
+                padding: '5',
+                border: '1px solid',
+                borderRadius: 'lg',
+                fontSize: '2xl',
+                fontWeight: 'bold',
+              })}
+            >
+              {slug.name}
+            </Link>
+          ))}
+        </section>
+      )}
     </main>
   );
 }

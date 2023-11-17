@@ -19,19 +19,23 @@ export default async function Bundle({ name, links }: TBundle) {
       >
         {name}
       </h2>
-      <section
-        className={css({
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'flex-start',
-          gap: '10',
-          flexWrap: 'wrap',
-        })}
-      >
-        {links.map((item) => (
-          <LinkItem key={item.id} {...item} />
-        ))}
-      </section>
+      {links.length === 0 ? (
+        '저장된 링크가 없습니다.'
+      ) : (
+        <section
+          className={css({
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+            gap: '10',
+            flexWrap: 'wrap',
+          })}
+        >
+          {links.map((item) => (
+            <LinkItem key={item.id} {...item} />
+          ))}
+        </section>
+      )}
     </article>
   );
 }
