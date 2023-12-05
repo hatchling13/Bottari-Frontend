@@ -1,28 +1,27 @@
+import { DialogTitle } from '@ark-ui/react';
+
 import BaseDialog from './BaseDialog';
+import LinkForm from './LinkForm';
+import FullWidthButton from './FullWidthButton';
 
 import { css } from '@/../styled-system/css';
+
+const buttonStyles = {
+  fontSize: '3xl',
+  paddingBlock: '5',
+};
 
 export default function LinkCreateDialog() {
   return (
     <BaseDialog
       trigger={
-        <button
-          className={css({
-            w: 'full',
-            fontSize: '3xl',
-            paddingBlock: '5',
-            borderWidth: '1px',
-            rounded: 'md',
-            _hover: {
-              cursor: 'pointer',
-            },
-          })}
-        >
-          링크 추가
-        </button>
+        <FullWidthButton cssProps={buttonStyles}>링크 추가</FullWidthButton>
       }
     >
-      내용
+      <div className={css({ display: 'flex', flexDir: 'column', gap: '3' })}>
+        <DialogTitle>새로운 링크 추가</DialogTitle>
+        <LinkForm />
+      </div>
     </BaseDialog>
   );
 }
