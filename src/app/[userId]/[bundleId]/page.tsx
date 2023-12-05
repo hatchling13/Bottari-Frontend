@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Bundle from '@/components/Bundle';
 
 import { prisma } from '@/../auth';
+import LinkCreateDialog from '@/components/LinkCreateDialog';
 
 export default async function BundlePage({
   params,
@@ -20,6 +21,9 @@ export default async function BundlePage({
   const links = await prisma.link.findMany({ where: { bundleId } });
 
   return (
-    <main>{<Bundle id={bundle.id} name={bundle.name} links={links} />}</main>
+    <main>
+      {<Bundle id={bundle.id} name={bundle.name} links={links} />}
+      <LinkCreateDialog />
+    </main>
   );
 }
