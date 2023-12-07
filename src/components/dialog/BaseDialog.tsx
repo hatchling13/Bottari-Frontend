@@ -1,28 +1,6 @@
 import { Dialog, Portal } from '@ark-ui/react';
 
-import { css } from '@/../styled-system/css';
-
-const backDropStyles = css({
-  backgroundColor: 'rgba(0, 0, 0, 0.8)',
-  position: 'fixed',
-  inset: '0px',
-});
-
-const positionerStyles = css({
-  w: 'screen',
-  h: 'screen',
-  position: 'fixed',
-  inset: '0px',
-  display: 'flex',
-  placeContent: 'center',
-});
-
-const contentStyles = css({
-  alignSelf: 'center',
-  backgroundColor: 'white',
-  padding: '5',
-  borderRadius: 'md',
-});
+import { backDropStyles, positionerStyles, contentStyles } from './styles';
 
 export default function BaseDialog({
   trigger,

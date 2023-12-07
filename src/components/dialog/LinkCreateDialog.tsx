@@ -5,10 +5,10 @@
 import { Dialog } from '@ark-ui/react';
 
 import BaseDialog from './BaseDialog';
-import LinkForm from './LinkForm';
-import FullWidthButton from './FullWidthButton';
+import LinkForm from '../LinkForm';
+import FullWidthButton from '../FullWidthButton';
 
-import { css } from '@/../styled-system/css';
+import { containerStyles } from './styles';
 
 const buttonStyles = {
   fontSize: '3xl',
@@ -22,7 +22,7 @@ export default function LinkCreateDialog() {
         <FullWidthButton cssProps={buttonStyles}>링크 추가</FullWidthButton>
       }
     >
-      <div className={css({ display: 'flex', flexDir: 'column', gap: '3' })}>
+      <div className={containerStyles}>
         <Dialog.Title>새로운 링크 추가</Dialog.Title>
         <LinkForm />
       </div>

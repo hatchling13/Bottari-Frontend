@@ -1,8 +1,9 @@
-import { css } from '../../styled-system/css';
-import LinkDeleteDialog from './LinkDeleteDialog';
+import { LinkDeleteDialog } from './dialog';
 import LinkDescription from './LinkDescription';
 
 import type { TLinkItem } from 'components';
+
+import { css } from '../../styled-system/css';
 
 export default async function LinkItem({ name, url, description }: TLinkItem) {
   return (

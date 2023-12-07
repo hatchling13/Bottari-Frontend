@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Bundle from '@/components/Bundle';
 
 import { prisma } from '@/../auth';
-import LinkCreateDialog from '@/components/LinkCreateDialog';
+import { LinkCreateDialog } from '@/components/dialog';
 
 export default async function BundlePage({
   params,

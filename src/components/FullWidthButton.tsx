@@ -10,7 +10,7 @@ export default function FullWidthButton({
   children,
   onClick,
 }: {
-  cssProps: SystemStyleObject;
+  cssProps?: SystemStyleObject;
   type?: 'button' | 'submit' | 'reset';
   children: React.ReactNode;
   onClick?: (event: EventFor<'button', 'onClick'>) => void;

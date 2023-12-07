@@ -5,46 +5,39 @@ import { FiX } from 'react-icons/fi';
 
 import BaseDialog from './BaseDialog';
 
-import { css } from '@/../styled-system/css';
+import {
+  actionButtonGroupStyles,
+  titleStyles,
+  pointerCursorStyles,
+  containerStyles,
+} from './styles';
 
 export default function LinkDeleteDialog() {
   return (
     <BaseDialog
       trigger={
-        <button
-          className={css({
-            _hover: {
-              cursor: 'pointer',
-            },
-          })}
-        >
+        <button className={pointerCursorStyles}>
           <FiX />
         </button>
       }
     >
-      <div className={css({ display: 'flex', flexDir: 'column', gap: '3' })}>
-        <Dialog.Title className={css({ fontSize: 'xl', fontWeight: 'bold' })}>
+      <div className={containerStyles}>
+        <Dialog.Title className={titleStyles}>
           정말로 삭제하시겠습니까?
         </Dialog.Title>
         <Dialog.Description>
           삭제된 링크는 되돌릴 수 없습니다.
         </Dialog.Description>
-        <div
-          className={css({
-            display: 'flex',
-            justifyContent: 'flex-end',
-            gap: '3',
-          })}
-        >
+        <div className={actionButtonGroupStyles}>
           <Dialog.CloseTrigger
+            className={pointerCursorStyles}
             onClick={() => console.log('Cancel')}
-            className={css({ cursor: 'pointer' })}
           >
             취소
           </Dialog.CloseTrigger>
           <Dialog.CloseTrigger
+            className={pointerCursorStyles}
             onClick={() => console.log('Delete')}
-            className={css({ cursor: 'pointer' })}
           >
             삭제
           </Dialog.CloseTrigger>
