@@ -13,25 +13,24 @@ const buttonStyles = {
   marginBlockStart: '3',
 };
 
-type inputAttribute = [string, string];
-
 export default function LinkForm() {
   const [name, setName] = useState('');
   const [url, setUrl] = useState('');
   const [description, setDescription] = useState('');
 
-  function handleClick(event: EventFor<'button', 'onClick'>) {
+  function handleSubmit(event: EventFor<'form', 'onSubmit'>) {
     event.preventDefault();
-    alert(`${name}\n${url}\n${description}`);
+
     setName('');
     setUrl('');
     setDescription('');
   }
 
-  // Find some way to make arrays with label/name, zip them to make array of tuple and use it
-
   return (
-    <form className={css({ display: 'flex', flexDir: 'column', gap: '3' })}>
+    <form
+      className={css({ display: 'flex', flexDir: 'column', gap: '3' })}
+      onSubmit={handleSubmit}
+    >
       <LabelledTextInput
         label="이름"
         name="name"
@@ -50,11 +49,7 @@ export default function LinkForm() {
         value={description}
         onChange={(event) => setDescription(event.currentTarget.value)}
       />
-      <FullWidthButton
-        cssProps={buttonStyles}
-        type="submit"
-        onClick={handleClick}
-      >
+      <FullWidthButton cssProps={buttonStyles} type="submit">
         추가
       </FullWidthButton>
     </form>
