@@ -1,4 +1,8 @@
-import { DialogTitle } from '@ark-ui/react';
+'use client';
+
+// https://github.com/vercel/next.js/issues/58776
+
+import { Dialog } from '@ark-ui/react';
 
 import BaseDialog from './BaseDialog';
 import LinkForm from './LinkForm';
@@ -19,7 +23,7 @@ export default function LinkCreateDialog() {
       }
     >
       <div className={css({ display: 'flex', flexDir: 'column', gap: '3' })}>
-        <DialogTitle>새로운 링크 추가</DialogTitle>
+        <Dialog.Title>새로운 링크 추가</Dialog.Title>
         <LinkForm />
       </div>
     </BaseDialog>
