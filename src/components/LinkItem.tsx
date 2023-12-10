@@ -5,7 +5,7 @@ import type { TLinkItem } from 'components';
 
 import { css } from '../../styled-system/css';
 
-export default async function LinkItem({ name, url, description }: TLinkItem) {
+export default function LinkItem({ name, url, description }: TLinkItem) {
   return (
     <article
       className={css({

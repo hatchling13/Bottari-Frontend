@@ -3,7 +3,7 @@ import LinkItem from '@/components/LinkItem';
 
 import type { TBundle } from 'components';
 
-export default async function Bundle({ name, links }: TBundle) {
+export default function Bundle({ name, links }: TBundle) {
   return (
     <article
       className={css({
